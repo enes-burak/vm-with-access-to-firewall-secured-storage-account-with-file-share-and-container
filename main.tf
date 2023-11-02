@@ -1,11 +1,4 @@
-#########   TASK 1    ###########################################
-
 # Create first resource group
-
-# resource "azurerm_resource_group" "rg1"{
-#   name     = var.rg_name
-#   location = var.location
-# }
 module "rg1" {
   source = "./modules/resource_group"
   name = var.rg1-name
@@ -63,52 +56,20 @@ module "vm" {
   caching = var.vm-caching
   storage_account_type = var.vm-strg-acc-type
 
-  # Soruce image reference
+  # Source image reference
   publisher = var.vm-publisher
   offer = var.vm-offer
   sku = var.vm-sku
   vrsn = var.vm-vrsn
 }
 
+# # Create second resource group
+module "rg2" {
+  source = "./modules/resource_group"
+  name = var.rg2-name
+  location = var.rg2-location
+}
 
-
-# resource "azurerm_virtual_machine" "vm1"{
-#     name = var.vm1_name
-#     resource_group_name = azurerm_resource_group.rg1.name
-#     location = azurerm_resource_group.rg1.location
-#     network_interface_ids = [azurerm_network_interface.nci1.id]
-#     vm_size = var.vm1_size
-#     storage_image_reference {
-#     publisher = var.storage_image_ref_pub
-#     offer     = var.storage_image_ref_offer
-#     sku       = var.storage_image_ref_sku
-#     version   = var.storage_image_ref_version
-#     }
-#     storage_os_disk {
-#     name              = var.storage_os_disk1_name
-#     caching           = var.storage_os_disk1_caching
-#     create_option     = var.storage_os_disk1_create_option
-#     managed_disk_type = var.storage_os_disk1_managed_disk_type
-#     }
-#     os_profile {
-#     computer_name  = var.os_profile_comp_name
-#     admin_username = var.os_profile_user
-#     admin_password = var.os_profile_pass
-#     }
-#     os_profile_linux_config {
-#     disable_password_authentication = var.os_profile_linux_config1
-#     }
-# }
-
-
-# ############# TASK 2    #####################################
-
-# # Create second resource group along with a storage account inside it
-
-# resource "azurerm_resource_group" "rg2"{
-#   name     = var.rg_name2
-#   location = var.location
-# }
 # resource "azurerm_storage_account" "storage_acc1" {
 #   name                     = var.storage_acc1_name
 #   resource_group_name      = azurerm_resource_group.rg2.name

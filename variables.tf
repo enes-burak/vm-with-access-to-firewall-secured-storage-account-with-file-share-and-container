@@ -1,4 +1,4 @@
-#Resource Group
+# Resource Group
 variable "rg1-name" {
   type = string
 }
@@ -7,7 +7,7 @@ variable "rg1-location" {
   type = string
 }
 
-#Virtual Network
+# Virtual Network
 variable "vnet-name" {
   type = string
 }
@@ -20,7 +20,7 @@ variable "vnet-dns-servers" {
   type = list(string)
 }
 
-#Subnet
+# Subnet
 variable "subnet-name" {
   type = string
 }
@@ -29,6 +29,7 @@ variable "subnet-address-prefixes" {
   type = list(string)
 }
 
+# Network interface card
 variable "nic-name" {
   type = string
 }
@@ -42,6 +43,7 @@ variable "nic-public-ip-address-id" {
   type = string
 }
 
+# Virtual Machine
 variable "vm-name" {
   type = string
 }
@@ -54,13 +56,14 @@ variable "vm-user" {
 variable "vm-pass" {
   type = string
 }
+# OS Disk
 variable "vm-caching" {
   type = string
 }
 variable "vm-strg-acc-type" {
   type = string
 }
-
+# Source image reference
 variable "vm-publisher" {
   type = string
 }
@@ -71,5 +74,13 @@ variable "vm-sku" {
   type = string
 }
 variable "vm-vrsn" {
+  type = string
+}
+
+# Resource Group 2
+variable "rg2-name" {
+    type = string
+}
+variable "rg2-location" {
   type = string
 }
