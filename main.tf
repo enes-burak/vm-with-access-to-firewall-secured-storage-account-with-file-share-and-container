@@ -88,13 +88,14 @@ module "storage1" {
   account_tier = var.stor-acc-tier
   account_replication_type = var.stor-replication-type
 }
-# # Create container
 
-# module "container1" {
-#   source = "./modules/storage_container"
-#   name = var.container-name
-#   storage_account_name = module.storage1.name
-#   }
+# # Create container
+module "container1" {
+  source = "./modules/storage_container"
+  name = var.container-name
+  storage_account_name = module.storage1.name
+  container_access_type = var.container-access-type
+  }
 
 # resource "azurerm_storage_container" "container1" {
 #   name                  = var.container1_name

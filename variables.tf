@@ -104,7 +104,9 @@ variable "stor-replication-type" {
 variable "container-name" {
   type = string
 }
-
+variable "container-access-type" {
+  type = string
+}
 
 
 
