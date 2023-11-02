@@ -47,19 +47,30 @@ module "nic" {
   public_ip_address_id = var.nic-public-ip-address-id
 }
 
-# resource "azurerm_network_interface" "nci1" {
-#   name                = var.nci1_name
-#   location            = azurerm_resource_group.rg1.location
-#   resource_group_name = azurerm_resource_group.rg1.name
+# # Create a Windows VM and connect it to our Network Interface Card
 
-#   ip_configuration {
-#     name                          = var.ipconfig1_name
-#     subnet_id                     = azurerm_subnet.subnet.id
-#     private_ip_address_allocation = var.ipconfig1_alloc
-#   }
-# }
+module "vm" {
+  source = "./modules/virtual_machine"
+  name = var.vm-name
+  resource_group_name = module.rg1.name
+  location = module.rg1.location
+  size = var.vm-size
+  admin_username = var.vm-user
+  admin_password = var.vm-pass
+  network_interface_ids = [module.nic.nic_id]
 
-# # Create a Linux VM and connect it to our Network Interface Card
+  # OS Disk
+  caching = var.vm-caching
+  storage_account_type = var.vm-strg-acc-type
+
+  # Soruce image reference
+  publisher = var.vm-publisher
+  offer = var.vm-offer
+  sku = var.vm-sku
+  vrsn = var.vm-vrsn
+}
+
+
 
 # resource "azurerm_virtual_machine" "vm1"{
 #     name = var.vm1_name

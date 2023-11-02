@@ -17,7 +17,7 @@ variable "admin_password" {
   type = string
 }
 variable "network_interface_ids" {
-  type = string
+  type = list(string)
 }
 
 #### OS DISK ####

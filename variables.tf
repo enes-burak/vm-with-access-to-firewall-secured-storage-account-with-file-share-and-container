@@ -42,10 +42,34 @@ variable "nic-public-ip-address-id" {
   type = string
 }
 
-# name = 
-# location = 
-# resource_group_name = 
-# ip_config_name = 
-# subnet_id = 
-# private_ip_address_allocation = 
-# public_ip_address_id = 
+variable "vm-name" {
+  type = string
+}
+variable "vm-size" {
+  type = string
+}
+variable "vm-user" {
+  type = string
+}
+variable "vm-pass" {
+  type = string
+}
+variable "vm-caching" {
+  type = string
+}
+variable "vm-strg-acc-type" {
+  type = string
+}
+
+variable "vm-publisher" {
+  type = string
+}
+variable "vm-offer" {
+  type = string
+}
+variable "vm-sku" {
+  type = string
+}
+variable "vm-vrsn" {
+  type = string
+}
