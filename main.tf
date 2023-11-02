@@ -70,6 +70,17 @@ module "rg2" {
   location = var.rg2-location
 }
 
+# # Create storage account
+
+module "storage1" {
+  source = "./modules/storage_account"
+  name = var.stor-name
+  resource_group_name = module.rg2.name
+  location = module.rg2.location
+  account_tier = var.stor-acc-tier
+  account_replication_type = var.stor-replication-type
+}
+
 # resource "azurerm_storage_account" "storage_acc1" {
 #   name                     = var.storage_acc1_name
 #   resource_group_name      = azurerm_resource_group.rg2.name

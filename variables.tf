@@ -76,7 +76,6 @@ variable "vm-sku" {
 variable "vm-vrsn" {
   type = string
 }
-
 # Resource Group 2
 variable "rg2-name" {
     type = string
@@ -84,3 +83,17 @@ variable "rg2-name" {
 variable "rg2-location" {
   type = string
 }
+
+# Storage account
+variable "stor-name" {
+  type = string
+}
+variable "stor-acc-tier" {
+  type = string
+}
+variable "stor-replication-type" {
+  type = string
+}
+
+
+
