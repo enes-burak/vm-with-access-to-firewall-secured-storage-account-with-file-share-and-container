@@ -27,8 +27,16 @@ module "subnet" {
   address_prefixes = var.subnet-address-prefixes
 }
 
-# # Create a network interface card for our VM to use
+# # Create a public IP
+module "public-ip" {
+  source = "./modules/public_ip"
+  name = var.public-ip-name
+  resource_group_name = module.rg1.name
+  location = module.rg1.location
+  allocation_method = var.public-ip-allocation-method
+}
 
+# # Create a network interface card for our VM to use
 module "nic" {
   source = "./modules/network_interface_card"
   name = var.nic-ip-name
@@ -37,7 +45,7 @@ module "nic" {
   ip_config_name = var.nic-ip-name
   subnet_id = module.subnet.subnet_id
   private_ip_address_allocation = var.nic-private-ip-allocation
-  public_ip_address_id = var.nic-public-ip-address-id
+  public_ip_address_id = module.public-ip.public-ip-id
 }
 
 # # Create a Windows VM and connect it to our Network Interface Card
@@ -80,19 +88,13 @@ module "storage1" {
   account_tier = var.stor-acc-tier
   account_replication_type = var.stor-replication-type
 }
-
-# resource "azurerm_storage_account" "storage_acc1" {
-#   name                     = var.storage_acc1_name
-#   resource_group_name      = azurerm_resource_group.rg2.name
-#   location                 = azurerm_resource_group.rg2.location
-#   account_tier             = var.storage_acc1_acc_tier
-#   account_replication_type = var.storage_acc1_replic_type
-# }
-
-
-# ############### Task 3 #########################################
-
 # # Create container
+
+# module "container1" {
+#   source = "./modules/storage_container"
+#   name = var.container-name
+#   storage_account_name = module.storage1.name
+#   }
 
 # resource "azurerm_storage_container" "container1" {
 #   name                  = var.container1_name

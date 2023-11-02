@@ -1,4 +1,4 @@
-resource "azurerm_storage_account" "example" {
+resource "azurerm_storage_account" "storage-acc" {
   name                     = var.name
   resource_group_name      = var.resource_group_name
   location                 = var.location

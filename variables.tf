@@ -29,6 +29,14 @@ variable "subnet-address-prefixes" {
   type = list(string)
 }
 
+# Public IP
+variable "public-ip-name" {
+  type = string
+}
+variable "public-ip-allocation-method" {
+  type = string
+}
+
 # Network interface card
 variable "nic-name" {
   type = string
@@ -37,9 +45,6 @@ variable "nic-ip-name" {
   type = string
 }
 variable "nic-private-ip-allocation" {
-  type = string
-}
-variable "nic-public-ip-address-id" {
   type = string
 }
 
@@ -94,6 +99,12 @@ variable "stor-acc-tier" {
 variable "stor-replication-type" {
   type = string
 }
+
+# Storage container
+variable "container-name" {
+  type = string
+}
+
 
 
 
