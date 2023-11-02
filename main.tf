@@ -31,6 +31,15 @@ module "vnet" {
 
 # # Create a subnet within our virtual network
 
+module "subnet" {
+  source = "./modules/subnet"
+  name = var.subnet-name
+  resource_group_name = module.rg1.name
+  location = module.rg1.location
+  virtual_network_name = module.vnet.name
+  address_prefixes = var.subnet-address-prefixes
+}
+
 # resource "azurerm_subnet" "subnet"{
 #     name = var.subnet_name
 #     resource_group_name = azurerm_resource_group.rg1.name
