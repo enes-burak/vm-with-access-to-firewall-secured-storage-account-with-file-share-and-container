@@ -14,12 +14,6 @@ module "rg1" {
 
 # # Create a virtual network inside of our resource group
 
-# resource "azurerm_virtual_network" "vnet"{
-#     name = var.vnet_name
-#     address_space = var.vnet_address_space
-#     location = azurerm_resource_group.rg1.location
-#     resource_group_name = azurerm_resource_group.rg1.name
-# }
 module "vnet" {
   source = "./modules/virtual_network"
   name = var.vnet-name
@@ -40,14 +34,18 @@ module "subnet" {
   address_prefixes = var.subnet-address-prefixes
 }
 
-# resource "azurerm_subnet" "subnet"{
-#     name = var.subnet_name
-#     resource_group_name = azurerm_resource_group.rg1.name
-#     virtual_network_name = azurerm_virtual_network.vnet.name
-#     address_prefixes = var.subnet_address_space
-# }
-
 # # Create a network interface card for our VM to use
+
+module "nic" {
+  source = "./modules/network_interface_card"
+  name = var.nic-ip-name
+  location = module.rg1.location
+  resource_group_name = module.rg1.name
+  ip_config_name = var.nic-ip-name
+  subnet_id = module.subnet.subnet_id
+  private_ip_address_allocation = var.nic-private-ip-allocation
+  public_ip_address_id = var.nic-public-ip-address-id
+}
 
 # resource "azurerm_network_interface" "nci1" {
 #   name                = var.nci1_name

@@ -28,3 +28,24 @@ variable "subnet-name" {
 variable "subnet-address-prefixes" {
   type = list(string)
 }
+
+variable "nic-name" {
+  type = string
+}
+variable "nic-ip-name" {
+  type = string
+}
+variable "nic-private-ip-allocation" {
+  type = string
+}
+variable "nic-public-ip-address-id" {
+  type = string
+}
+
+# name = 
+# location = 
+# resource_group_name = 
+# ip_config_name = 
+# subnet_id = 
+# private_ip_address_allocation = 
+# public_ip_address_id = 
