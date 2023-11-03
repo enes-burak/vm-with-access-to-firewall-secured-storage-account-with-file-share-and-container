@@ -97,15 +97,36 @@ module "container1" {
   container_access_type = var.container-access-type
   }
 
-# resource "azurerm_storage_container" "container1" {
-#   name                  = var.container1_name
-#   storage_account_name  = azurerm_storage_account.storage_acc1.name
-#   container_access_type = var.container1_access_type
-# }
-
-# # Uploading of "LICENSE" file done through Azure Portal
-
-# ################ Task 4 ########################################
+# Create SAS token
+module "storage-sas-token" {
+  source = "./modules/storage-sas-token"
+  connection_string = module.storage1.connection_string
+  https_only = var.stor-sas-https-only
+  signed_version = var.stor-sas-signed-version
+  # Resource types
+  service = var.stor-sas-service
+  container = var.stor-sas-container
+  object = var.stor-sas-object
+  # Services
+  blob = var.stor-sas-blob
+  queue = var.stor-sas-queue
+  table = var.stor-sas-table
+  file = var.stor-sas-file
+  # Token Timer
+  start = var.stor-sas-start
+  expiry = var.stor-sas-expiry
+  # Permissions
+  read = var.stor-sas-read
+  write = var.stor-sas-write
+  delete = var.stor-sas-delete
+  list = var.stor-sas-list
+  add = var.stor-sas-add
+  create = var.stor-sas-create
+  update = var.stor-sas-update
+  process = var.stor-sas-process
+  tag = var.stor-sas-tag
+  filter = var.stor-sas-filter
+}
 
 
 # ################ Task 5 ########################################

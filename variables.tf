@@ -108,5 +108,73 @@ variable "container-access-type" {
   type = string
 }
 
+# Storage SAS Token
+variable "stor-sas-https-only" {
+  type = bool
+}
+variable "stor-sas-signed-version" {
+  type = string
+}
+# Resource Types
+variable "stor-sas-service" {
+  type = bool
+}
+variable "stor-sas-container" {
+  type = bool
+}
+variable "stor-sas-object" {
+  type = bool
+}
+# Services
+variable "stor-sas-blob" {
+  type = bool
+}
+variable "stor-sas-queue" {
+  type = bool
+}
+variable "stor-sas-table" {
+  type = bool
+}
+variable "stor-sas-file" {
+  type = bool
+}
+# SAS Token Validity Period
+variable "stor-sas-start" {
+  type = string
+}
+variable "stor-sas-expiry" {
+  type = string
+}
+# Permissions
+variable "stor-sas-read" {
+  type = bool
+}
+variable "stor-sas-write" {
+  type = bool
+}
+variable "stor-sas-delete" {
+  type = bool
+}
+variable "stor-sas-list" {
+  type = bool
+}
+variable "stor-sas-add" {
+  type = bool
+}
+variable "stor-sas-create" {
+  type = bool
+}
+variable "stor-sas-update" {
+  type = bool
+}
+variable "stor-sas-process" {
+  type = bool
+}
+variable "stor-sas-tag" {
+  type = bool
+}
+variable "stor-sas-filter" {
+  type = bool
+}
 
 
