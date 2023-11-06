@@ -181,3 +181,23 @@ variable "stor-sas-filter" {
 variable "role-definition-name" {
   type = string
 }
+
+# File Share
+variable "file-share-name" {
+  type = string
+}
+variable "file-share-quota" {
+  type = string
+}
+variable "file-share-id" {
+  type = string
+}
+variable "file-share-permissions" {
+  type = string
+}
+variable "file-share-start" {
+  type = string
+}
+variable "file-share-expiry" {
+  type = string
+}

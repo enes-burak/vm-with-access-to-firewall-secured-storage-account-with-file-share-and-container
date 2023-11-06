@@ -138,6 +138,19 @@ module "role-assignment0" {
   principal_id = data.azurerm_client_config.client-config.object_id
   }
 
+# File Share
+module "file-share" {
+  source = "./modules/file_share"
+  name = var.file-share-name
+  storage_account_name = module.storage1.name
+  quota = var.file-share-quota
+  # ACL
+  id = var.file-share-id
+  # Access Policy
+  permissions = var.file-share-permissions
+  start = var.file-share-start
+  expiry = var.file-share-expiry
+}
 
 # ################ Task 5 ########################################
 
