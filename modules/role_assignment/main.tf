@@ -1,11 +1,5 @@
-data "azurerm_subscription" "primary" {
-}
-
-data "azurerm_client_config" "example" {
-}
-
-resource "azurerm_role_assignment" "example" {
-  scope                = data.azurerm_subscription.primary.id
-  role_definition_name = "Storage Blob Data Owner"
-  principal_id         = data.azurerm_client_config.example.object_id
+resource "azurerm_role_assignment" "role-assignment" {
+  scope                = var.scope
+  role_definition_name = var.role_definition_name
+  principal_id         = var.principal_id
 }

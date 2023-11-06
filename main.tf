@@ -128,6 +128,16 @@ module "storage-sas-token" {
   filter = var.stor-sas-filter
 }
 
+# Role Assignment
+data "azurerm_subscription" "primary" {}
+data "azurerm_client_config" "client-config" {}
+module "role-assignment0" {
+  source = "./modules/role_assignment"
+  scope = data.azurerm_subscription.primary.id
+  role_definition_name = var.role-definition-name
+  principal_id = data.azurerm_client_config.client-config.object_id
+  }
+
 
 # ################ Task 5 ########################################
 

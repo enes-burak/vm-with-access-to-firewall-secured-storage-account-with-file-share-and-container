@@ -177,4 +177,7 @@ variable "stor-sas-filter" {
   type = bool
 }
 
-
+# Role Assignment
+variable "role-definition-name" {
+  type = string
+}
