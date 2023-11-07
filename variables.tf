@@ -99,6 +99,12 @@ variable "stor-acc-tier" {
 variable "stor-replication-type" {
   type = string
 }
+variable "stor-net-default-action" {
+  type = string
+}
+variable "stor-net-ip-rules" {
+  type = list(string)
+}
 
 # Storage container
 variable "container-name" {

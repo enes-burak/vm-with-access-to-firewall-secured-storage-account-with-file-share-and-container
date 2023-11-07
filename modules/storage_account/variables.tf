@@ -13,3 +13,9 @@ variable "account_tier" {
 variable "account_replication_type" {
   type = string
 }
+variable "default_action" {
+  type = string
+}
+variable "ip_rules" {
+  type = list(string)
+}

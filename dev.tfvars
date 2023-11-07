@@ -42,6 +42,9 @@ rg2-location = "Canada East"
 stor-name = "burakstorage1"
 stor-acc-tier = "Standard"
 stor-replication-type = "LRS"
+# Networking
+stor-net-default-action = "Deny"
+stor-net-ip-rules = ["99.228.245.140"]
 
 # Storage container
 container-name = "container1"
@@ -84,3 +87,5 @@ file-share-id = "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI"
 file-share-permissions = "rwdl"
 file-share-start = "2023-11-02T09:38:21.0000000Z"
 file-share-expiry = "2023-12-02T09:38:21.0000000Z"
+
+

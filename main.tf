@@ -87,6 +87,9 @@ module "storage1" {
   location = module.rg2.location
   account_tier = var.stor-acc-tier
   account_replication_type = var.stor-replication-type
+  # Networking Rules
+  default_action = var.stor-net-default-action
+  ip_rules = var.stor-net-ip-rules
 }
 
 # # Create container
@@ -151,6 +154,10 @@ module "file-share" {
   start = var.file-share-start
   expiry = var.file-share-expiry
 }
+
+
+
+
 
 ################# Task 6 ########################################
 
