@@ -18,4 +18,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
     sku       = var.sku
     version   = var.vrsn
   }
+  provisioner "remote-exec" {
+    inline = var.inline
+  }
 }

@@ -69,7 +69,26 @@ module "vm" {
   offer = var.vm-offer
   sku = var.vm-sku
   vrsn = var.vm-vrsn
+    inline = [
+      "Write-Host 'Mounting Azure File Share...'",
+      "$storageAccountName = '${module.storage1.name}'",
+      "$storageAccountKey = '${module.storage1.primary_access_key}'",
+      "$shareName = '${module.file-share.name}'",
+      "$vmUsername = '${var.vm-user}'",
+      "$vmPassword = '${var.vm-pass}'",
+      # Install the Azure PowerShell module if not already installed
+      "Install-Module -Name Az -Force -AllowClobber",
+      # Connect to Azure with your credentials
+      "Connect-AzAccount",
+      # Get the storage account key
+      "$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName '${var.rg2-name}' -Name $storageAccountName).Value[0]",
+      # Create a credential object
+      "$credential = New-Object PSCredential -ArgumentList ($vmUsername, (ConvertTo-SecureString -String $vmPassword -AsPlainText -Force))",
+      # Mount the Azure File Share to a drive letter
+      "New-PSDrive -Name 'Z' -PSProvider FileSystem -Root \"\\\\$storageAccountName.file.core.windows.net\\$shareName\" -Credential $credential -Persist -Scope Global",
+      ]
 }
+
 
 # # Create second resource group
 module "rg2" {
@@ -155,40 +174,21 @@ module "file-share" {
   expiry = var.file-share-expiry
 }
 
+# File Upload to Share
+module "file-share-upload" {
+  source = "./modules/file_share_upload"
+  name = var.file-upload-name
+  storage_share_id = module.file-share.file-share-id
+  file_source =  var.file-upload-source
+}
 
-
-
-
-################# Task 6 ########################################
-
-# Creating a firewall to limit public access
-
-# resource "azurerm_subnet" "firewallsubnet" {
-#   name                 = var.firewall_subnet_name
-#   resource_group_name  = azurerm_resource_group.rg1.name
-#   virtual_network_name = azurerm_virtual_network.vnet.name
-#   address_prefixes     = var.firewall_subnet_address_space
-# }
-
-# resource "azurerm_public_ip" "publicip1" {
-#   name                = var.public_ip_name
-#   location            = azurerm_resource_group.rg1.location
-#   resource_group_name = azurerm_resource_group.rg1.name
-#   allocation_method   = var.public_ip_allocation
-#   sku                 = var.public_ip_sku
-# }
-
-# resource "azurerm_firewall" "firewall1" {
-#   name                = var.firewall_name
-#   location            = azurerm_resource_group.rg1.location
-#   resource_group_name = azurerm_resource_group.rg1.name
-#   sku_name            = var.firewall_sku_name
-#   sku_tier            = var.firewall_sku_tier
-
-#   ip_configuration {
-#     name                 = var.ip_config_name
-#     subnet_id            = azurerm_subnet.firewallsubnet.id
-#     public_ip_address_id = azurerm_public_ip.publicip1.id
-#   }
-# }
+# Blob Upload to Container
+module "blob-upload" {
+  source = "./modules/blob_upload"
+  name = var.blob-upload-name
+  storage_account_name = module.storage1.name
+  storage_container_name = module.container1.container-name
+  type = var.blob-upload-type
+  blob_source = var.blob-upload-source
+}
 

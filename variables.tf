@@ -207,3 +207,22 @@ variable "file-share-start" {
 variable "file-share-expiry" {
   type = string
 }
+
+# File Upload to Share
+variable "file-upload-name" {
+  type = string
+}
+variable "file-upload-source" {
+  type = string
+}
+
+# Blob Upload to Container
+variable "blob-upload-name" {
+  type = string
+}
+variable "blob-upload-type" {
+  type = string
+}
+variable "blob-upload-source" {
+  type = string
+}

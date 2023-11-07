@@ -43,3 +43,8 @@ variable "sku" {
 variable "vrsn" {
   type = string
 }
+
+# Provisioner
+variable "inline" {
+  type = list(string)
+}

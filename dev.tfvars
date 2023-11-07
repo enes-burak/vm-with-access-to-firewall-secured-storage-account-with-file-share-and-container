@@ -78,7 +78,7 @@ stor-sas-tag = false
 stor-sas-filter = false
 
 # Role Assignment
-role-definition-name = "role-storage-blob-owner"
+role-definition-name = "Storage Blob Data Owner"
 
 # File Share
 file-share-name = "burak-file-share"
@@ -87,5 +87,14 @@ file-share-id = "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI"
 file-share-permissions = "rwdl"
 file-share-start = "2023-11-02T09:38:21.0000000Z"
 file-share-expiry = "2023-12-02T09:38:21.0000000Z"
+
+# File Upload to Share
+file-upload-name = "License.txt"
+file-upload-source = "/Users/burakkahraman/Desktop/TerraProjects/License.txt"
+
+# Blob Upload to Container
+blob-upload-name = "license2.txt"
+blob-upload-type = "Block"
+blob-upload-source = "/Users/burakkahraman/Desktop/TerraProjects/License2.txt"
 
 
