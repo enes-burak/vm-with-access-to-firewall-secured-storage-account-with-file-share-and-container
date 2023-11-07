@@ -152,26 +152,6 @@ module "file-share" {
   expiry = var.file-share-expiry
 }
 
-# ################ Task 5 ########################################
-
-# # Create file share 
-
-
-# resource "azurerm_storage_share" "file_share1" {
-#   name                 = var.f_share_name
-#   storage_account_name = azurerm_storage_account.storage_acc1.name
-#   quota                = var.f_share_quota
-
-#   acl {
-#     id = var.f_share_acl_id
-#     access_policy {
-#         permissions = var.f_share_access_policy_permissions
-#         start       = var.f_share_access_policy_start
-#         expiry      = var.f_share_access_policy_expiry
-#     }
-#   }
-# }
-
 ################# Task 6 ########################################
 
 # Creating a firewall to limit public access
