@@ -34,6 +34,12 @@ vm-offer = "WindowsServer"
 vm-sku = "2016-Datacenter"
 vm-vrsn = "latest"
 
+# VM Extension
+vm-ext-name = "script1"
+vm-ext-publisher = "Microsoft.Azure.Extensions"
+vm-ext-type = "CustomScript"
+vm-ext-type-handler-version = "2.0"
+
 # Resource Group 2
 rg2-name = "rg2"
 rg2-location = "Canada East"
@@ -93,8 +99,8 @@ file-upload-name = "License.txt"
 file-upload-source = "/Users/burakkahraman/Desktop/TerraProjects/License.txt"
 
 # Blob Upload to Container
-blob-upload-name = "license2.txt"
+blob-upload-name = "mypowershellscript.ps1"
 blob-upload-type = "Block"
-blob-upload-source = "/Users/burakkahraman/Desktop/TerraProjects/License2.txt"
+blob-upload-source = "/Users/burakkahraman/Desktop/TerraProjects/mypowershellscript.ps1"
 
 

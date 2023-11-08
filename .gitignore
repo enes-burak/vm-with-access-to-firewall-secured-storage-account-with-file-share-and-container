@@ -8,3 +8,4 @@
 
 # Sensitive Data
 *.tfvars
+*.ps1

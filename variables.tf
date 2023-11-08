@@ -89,6 +89,21 @@ variable "rg2-location" {
   type = string
 }
 
+# # VM Extension
+variable "vm-ext-name" {
+  type = string
+}
+variable "vm-ext-publisher" {
+  type = string
+}
+variable "vm-ext-type" {
+  type = string
+}
+variable "vm-ext-type-handler-version" {
+  type = string
+}
+
+
 # Storage account
 variable "stor-name" {
   type = string

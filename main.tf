@@ -69,26 +69,27 @@ module "vm" {
   offer = var.vm-offer
   sku = var.vm-sku
   vrsn = var.vm-vrsn
-    inline = [
-      "Write-Host 'Mounting Azure File Share...'",
-      "$storageAccountName = '${module.storage1.name}'",
-      "$storageAccountKey = '${module.storage1.primary_access_key}'",
-      "$shareName = '${module.file-share.name}'",
-      "$vmUsername = '${var.vm-user}'",
-      "$vmPassword = '${var.vm-pass}'",
-      # Install the Azure PowerShell module if not already installed
-      "Install-Module -Name Az -Force -AllowClobber",
-      # Connect to Azure with your credentials
-      "Connect-AzAccount",
-      # Get the storage account key
-      "$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName '${var.rg2-name}' -Name $storageAccountName).Value[0]",
-      # Create a credential object
-      "$credential = New-Object PSCredential -ArgumentList ($vmUsername, (ConvertTo-SecureString -String $vmPassword -AsPlainText -Force))",
-      # Mount the Azure File Share to a drive letter
-      "New-PSDrive -Name 'Z' -PSProvider FileSystem -Root \"\\\\$storageAccountName.file.core.windows.net\\$shareName\" -Credential $credential -Persist -Scope Global",
-      ]
 }
 
+# VM Extension
+module "vm-extension" {
+  source = "./modules/vm_extension"
+  name = var.vm-ext-name
+  virtual_machine_id = module.vm.vm-id
+  publisher = var.vm-ext-publisher
+  type = var.vm-ext-type
+  type_handler_version = var.vm-ext-type-handler-version 
+  settings = <<SETTINGS
+  {    
+    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.mypowershellscript.rendered)}')) | Out-File -filepath mypowershellscript.ps1"
+  }
+  SETTINGS
+  
+}
+# Data for VM extension
+data "template_file" "mypowershellscript" {
+    template = file("mypowershellscript.ps1")
+}
 
 # # Create second resource group
 module "rg2" {
