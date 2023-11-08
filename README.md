@@ -2,7 +2,8 @@
 
 Hello world!
 
-![Architecture Design](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/c77e5220-a466-4eb9-897a-5fc5cf173624)
+![Architecture Design](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/c77e5220-a466-4eb9-897a-5fc5cf173624)/n
+
 
 In this Terraform project I have successfully created the infrastructure and set up for an environment that includes a virtual machine, storage account, container, file share, and all the necessary connections within them to make them both private to the public, yet connected to one another, all while using the best practices for Terraform. Using Terraform to do this project both makes it reusable and it helps you learn how everything in the backend works and connects with one another, nothing short of a crash course on topics such as: Creation and Configuration of Cloud Infrastructure, Managing different Storage Types, Authentication and Authorization for resources, Network Access Management, and many other things in between. I have provided a broad explanation in the following lines, for detailed examples, refer to the code.
 
