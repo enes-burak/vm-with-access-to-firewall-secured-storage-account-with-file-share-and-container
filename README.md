@@ -2,7 +2,8 @@
 
 Hello world!
 
-![Screenshot 2023-11-08 at 10 18 41 AM](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/d1a35a1f-1c03-4ab3-aa35-b65289a51b67)
+![Architecture Design](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/c77e5220-a466-4eb9-897a-5fc5cf173624)
+
 In this Terraform project I have successfully created the infrastructure and set up for an environment that includes a virtual machine, storage account, container, file share, and all the necessary connections within them to make them both private to the public, yet connected to one another, all while using the best practices for Terraform. Using Terraform to do this project both makes it reusable and it helps you learn how everything in the backend works and connects with one another, nothing short of a crash course on topics such as: Creation and Configuration of Cloud Infrastructure, Managing different Storage Types, Authentication and Authorization for resources, Network Access Management, and many other things in between. I have provided a broad explanation in the following lines, for detailed examples, refer to the code.
 
 1. We want to set up our first resource group. We will designate this resource group to our virtual machine (VM). To do that, we must create a virtual network (VNET) and subnet within it so that we are able communicate with our new machine. Now, for our VM to connect to our newly acquired VNET, we must also give it a network interface card (NIC).
