@@ -15,5 +15,14 @@ In this Terraform project I have successfully created the infrastructure and set
 6. Finally, we need to tinker with our VM so that it can connect to the file share that we set up. This can be done by creating deploying the file share and pressing browse, connect through the portal. At the top you will find a connect button and this opens a tab on the right. Make sure to select the operating system of the machine you would like to connect to the file share and press “Show Script”. Copy this script and using your terminal, create a file with this as its contents and make sure that the file extension is “.ps1” (in the case of windows).  This will be the file you select as your script file to run in your VM when it is created so that it has access to your file share.
 7. There is also some code pertaining to uploading single files. There is one for the File Share, and also one for the Blob Container. Use these to check if your connections are set up properly! Enjoy!
 
+
+Here are some screenshots resources of the finished product:
+![Resource Group 1](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/daf4a91f-cc92-4087-86ff-6984cef0ce09)
+![Resource Group 2](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/1e815de0-8efd-4abd-8002-9ff38f0c1a85)
+![Blob Container](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/b06bcc63-e47d-48b3-9ffd-d2bf66b18acd)
+![File Share Browse](https://github.com/enes-burak/vm-with-access-to-firewall-secured-storage-account-with-file-share-and-container/assets/113402152/7c16385b-935a-4115-ac5a-6069143f9c3d)
+
+
+
 Hopefully this brief walkthrough is enough for you to take on this project and give you pointers along the way.
 Thank you and goodbye. :)
